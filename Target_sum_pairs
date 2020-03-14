@@ -1,0 +1,32 @@
+import java.util.*;
+public class Main {
+	public static void main(String args[]) {
+		Scanner scn=new Scanner(System.in);
+		int n=scn.nextInt();
+		int[] a=new int[n];
+		for(int i=0;i<n;i++)
+			a[i]=scn.nextInt();
+		int target=scn.nextInt();
+    //sort the given array to find pairs by 2 pointers approach
+		Arrays.sort(a);
+    //declare pointers initialized to beginning and end of the array
+		int end=n-1,start=0;
+    //use pointers to iterate over the given array
+		while(end>start){
+    //find sum of pairs
+			int sum=a[start]+a[end];
+      //if answer pair is found
+			if(sum==target){
+      //print the answer pair and increment pointer at beginning and decrement pointer at the end
+				System.out.println(a[start]+" and "+a[end]);
+				end--; start++;
+			}
+      //sum is less than the target, increment the pointer at beginning
+			else if(sum<target){
+				start++;
+			}
+      //sum is more than the target, decrement the pointer at end
+			else end--;
+		}
+	}
+}
